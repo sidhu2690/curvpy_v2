@@ -1,27 +1,65 @@
-
-<!DOCTYPE html>
 <html>
 <head>
   <meta name="google-site-verification" content="jM3z0TXp0biP1G_m188136seOk1Uqsq3RWPzgBy3aOw" />
   <title>CurvPy Documentation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    h1, h2, h3 {
+      margin: 20px 0 10px;
+      font-weight: bold;
+    }
+
+    p, pre, code {
+      margin: 10px 0;
+    }
+
     pre {
-      background-color: #f4f4f4;
       padding: 10px;
+      background-color: #f4f4f4;
       border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    code {
+      padding: 2px 5px;
+      background-color: #f4f4f4;
+      border-radius: 3px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
-  <h1>CurvPy Documentation</h1>
+  <div class="container">
+    <h1>CurvPy Documentation</h1>
 
-  <h2>Installation</h2>
-  <pre><code>pip install curvpy</code></pre>
+    <h2>Installation</h2>
+    <pre><code>pip install curvpy</code></pre>
 
-  <h2>Usage</h2>
+    <h2>Usage</h2>
 
-  <h3>Regression Analysis</h3>
-  <pre><code>
+    <h3>Regression Analysis</h3>
+    <pre><code>
 import numpy as np
 from curvpy import datasleuth
 
@@ -32,10 +70,10 @@ y = np.array([2, 4, 6, 8, 10])
 # Perform regression analysis
 results = datasleuth(x, y)
 print(results)
-  </code></pre>
+    </code></pre>
 
-  <h3>Optimization</h3>
-  <pre><code>
+    <h3>Optimization</h3>
+    <pre><code>
 import numpy as np
 from curvpy import optifit
 
@@ -53,23 +91,23 @@ guess_params = [1.0, 1.0, 1.0]
 # Perform curve fitting and display results
 fit_results = optifit(func, x_data, y_data, guess_params)
 print(fit_results)
-  </code></pre>
+    </code></pre>
 
-  <h2>API Reference</h2>
+    <h2>API Reference</h2>
 
-  <h3>curvpy.datasleuth(x, y)</h3>
-  <p>Perform regression analysis on the given data points.</p>
-  <pre><code>
+    <h3>curvpy.datasleuth(x, y)</h3>
+    <p>Perform regression analysis on the given data points.</p>
+    <pre><code>
 x (array-like): The independent variable data.
 y (array-like): The dependent variable data.
 
 Returns:
 results (dict): A dictionary containing the results of the regression analysis.
-  </code></pre>
+    </code></pre>
 
-  <h3>curvpy.optifit(func, x, y, guess_params)</h3>
-  <p>Perform optimization by fitting a function to the given data points.</p>
-  <pre><code>
+    <h3>curvpy.optifit(func, x, y, guess_params)</h3>
+    <p>Perform optimization by fitting a function to the given data points.</p>
+    <pre><code>
 func (callable): The function to fit.
 x (array-like): The independent variable data.
 y (array-like): The dependent variable data.
@@ -77,18 +115,22 @@ guess_params (list): The initial guess for the function parameters.
 
 Returns:
 fit_results (dict): A dictionary containing the results of the optimization.
-  </code></pre>
+    </code></pre>
 
-  <h2>Examples</h2>
-  <p>For more examples and use cases, please refer to the <a href="https://github.com/curvpy/examples">CurvPy Examples Repository</a>.</p>
+    <h2>Examples</h2>
+    <p>For more examples and use cases, please refer to the <a href="https://github.com/curvpy/examples">CurvPy Examples Repository</a>.</p>
 
-  <h2>Contributing</h2>
-  <p>If you would like to contribute to the development of CurvPy, please refer to the <a href="https://github.com/curvpy/curvpy/blob/main/CONTRIBUTING.md">Contributing Guidelines</a>.</p>
+    <h2>Contributing</h2>
+    <p>If you would like to contribute to the development of CurvPy, please refer to the <a href="https://github.com/curvpy/curvpy/blob/main/CONTRIBUTING.md">Contributing Guidelines</a>.</p>
 
-  <h2>License</h2>
-  <p>CurvPy is released under the <a href="https://github.com/curvpy/curvpy/blob/main/LICENSE">MIT License</a>.</p>
+    <h2>License</h2>
+    <p>CurvPy is released under the <a href="https://github.com/curvpy/curvpy/blob/main/LICENSE">MIT License</a>.</p>
 
-  <h2>Contact</h2>
-  <p>For any inquiries or support, please contact the CurvPy team at <a href="mailto:curvpy@example.com">curvpy@example.com</a>.</p>
+    <h2>Contact</h2>
+    <p>For any inquiries or support, please contact the CurvPy team at <a href="mailto:curvpy@example.com">curvpy@example.com</a>.</p>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
