@@ -53,9 +53,9 @@
 </head>
 <body>
   <div class="container">
-    <h1>CurvPy Documentation</h1>
+    <h1>CurvPy</h1>
 
-    <p>Welcome to the CurvPy documentation! CurvPy is a powerful data analysis tool for performing regression analysis and optimization on datasets. This library is designed to simplify the process of analyzing and optimizing data, making it accessible to both beginners and experienced data scientists.</p>
+    <p>Welcome to the CurvPy documentation! CurvPy is a powerful data analysis tool for performing regression analysis and optimization on datasets. This library is designed to simplify the process of analysing and optimizing data, making it accessible to beginners and experienced data scientists. CurvPy also has a UI-based <a href="https://github.com/sidhu2690/CurvPy">repository</a>, which has more utilities. (CurvPy is still under development)  </p>
 
     <h2>Installation</h2>
     <pre><code>pip install curvpy</code></pre>
@@ -76,6 +76,33 @@ y = np.array([2, 4, 6, 8, 10])
 results = datasleuth(x, y)
 print(results)
     </code></pre>
+<h4>Result</h4>
+    <pre><code>Linear Regression
+Equation: y = 2.00x + 0.00
+R-squared value: 1.0
+
+Polynomial Regression (Degree 2 )
+Equation: y = 0.00x^0 + 2.00x^1 + 0.00x^2 + 0.00
+R-squared value: 1.0
+
+Logarithmic Regression
+Equation: y = 1.36 + 4.84 * log(x)
+R-squared value: 0.9473245635652926
+
+Exponential Regression
+Equation: y = 2.08 * exp(0.32 * x)
+R-squared value: 0.9644977818927202
+
+Power Law Regression
+Equation: y = 2.00 * x^1.00
+R-squared value: 1.0
+
+Sinusoidal Regression
+Equation: y = -733.82 * sin(3.14 * x + -3.14) + 6.00
+R-squared value: 0.35999948635426393
+</code></pre>
+
+
 
     <h3>Optimization</h3>
     <p>In addition to regression analysis, CurvPy also offers an optimization module for fitting functions to your data. Here's an example of how to use CurvPy for optimization:</p>
@@ -98,21 +125,30 @@ guess_params = [1.0, 1.0, 1.0]
 fit_results = optifit(func, x_data, y_data, guess_params)
 print(fit_results)
     </code></pre>
+   <h4>Result</h4>
+    <pre><code>Fitting results:
+Parameters: [2.48839764 1.29229271 0.52824961]
+Number of data points: 100
+Number of parameters: 3
+SSE: 20.494621282703033
+RMSE: 0.4527098550142578
+R-squared: 0.9358824257496368
+Chi-square: 100.72107882471406
+KS Test - Statistic: 0.20081623125615902
+KS Test - p-value: 0.0005191873072093909
+AD Test - Statistic: 0.4611616085587116
+AD Test - Critical Values: [0.555 0.632 0.759 0.885 1.053]
+AD Test - Significance Levels: [15.  10.   5.   2.5  1. ]
+	</code></pre>
+<img src="https://i.ibb.co/BPvL14X/cur.png" alt="My Image">
+<img src="https://i.ibb.co/XSYsXgy/cur.pngg" alt="My Image1">
 
-    <h2>API Reference</h2>
-    <p>For detailed information about the available functions and classes in CurvPy, please refer to the <a href="https://curvpy.github.io/docs/api/">CurvPy API Reference</a>.</p>
-
-    <h2>Examples</h2>
-    <p>For more examples and use cases, please check out the <a href="https://github.com/curvpy/examples">CurvPy Examples Repository</a>.</p>
 
     <h2>Contributing</h2>
-    <p>If you would like to contribute to the development of CurvPy, please refer to the <a href="https://github.com/curvpy/curvpy/blob/main/CONTRIBUTING.md">Contributing Guidelines</a>.</p>
-
-    <h2>License</h2>
-    <p>CurvPy is released under the <a href="https://github.com/curvpy/curvpy/blob/main/LICENSE">MIT License</a>.</p>
+    <p>If you would like to contribute to the development of CurvPy, please contact <a href="sidhuser2690@gmail.com">curvpy@gmail.com</a></p>
 
     <h2>Contact</h2>
-    <p>For any inquiries or support, please contact the CurvPy team at <a href="mailto:curvpy@example.com">curvpy@example.com</a>.</p>
+    <p>For any inquiries or support, please contact the CurvPy team at <a href="sidhuser2690@gmail.com">curvpy@gmail.com</a>.</p>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
