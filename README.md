@@ -1,1 +1,1 @@
-# curvpy-2
+# CurvPy_v2
