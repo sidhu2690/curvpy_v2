@@ -167,20 +167,22 @@ Enter the number of function evaluations (optional): :
 Optimal parameters: [ 5.99839516e-02 -1.36091352e-02 -2.50169054e-03  1.15650314e+01]
     </code></pre>
 <h5>New update!</h5>
-<p>maxfev parameter:
-
-1. The number of function evaluations determines the maximum number of times the model function is called during the optimization process.
-   The optimization algorithm iteratively adjusts the parameters of the model function to minimize the difference between the predicted values and the actual data.
-   The purpose of it is to set an upper limit on the computational time for the optimization process.
-   If the algorithm reaches the maximum number of function evaluations specified by maxfev before converging to a solution, it will terminate and return the current best estimate of the parameters.
-
-2. The bounds parameter allows you to set lower and upper bounds for the parameters of the model function.
-   It helps restrict the parameter search space during the optimization process.
-   By setting bounds, you can constrain the parameters to specific ranges that make sense for your problem.
-   The bounds parameter is a tuple of two arrays: the lower bounds and the upper bounds.
-   For each parameter, specify the lower and upper bounds in the corresponding arrays.
-   Setting a lower bound to -np.inf (negative infinity) means there is no lower constraint, while setting an upper bound to np.inf (positive infinity) means there is no upper constraint.
-   Using bounds can help prevent unrealistic or invalid parameter values during optimization, improving the stability and reliability of the results.</p>
+<h6>Number of evaluations</h6>
+<p>
+The number of function evaluations determines the maximum number of times the model function is called during the optimization process.
+The optimization algorithm iteratively adjusts the parameters of the model function to minimize the difference between the predicted values and the actual data.
+The purpose of it is to set an upper limit on the computational time for the optimization process.
+If the algorithm reaches the maximum number of function evaluations specified by maxfev before converging to a solution, it will terminate and return the current best estimate of the parameters.
+</p>
+<h6>Bound parameters</h6>
+<p>
+The bounds parameter allows you to set lower and upper bounds for the parameters of the model function.
+It helps restrict the parameter search space during the optimization process.
+By setting bounds, you can constrain the parameters to specific ranges that make sense for your problem.
+The bounds parameter is a tuple of two arrays: the lower bounds and the upper bounds.
+For each parameter, specify the lower and upper bounds in the corresponding arrays.
+Setting a lower bound to -np.inf (negative infinity) means there is no lower constraint, while setting an upper bound to np.inf (positive infinity) means there is no upper constraint.
+Using bounds can help prevent unrealistic or invalid parameter values during optimization, improving the stability and reliability of the results.</p>
 	  
 	    
     <h2>Contributing</h2>
