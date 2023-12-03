@@ -1,197 +1,221 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta name="google-site-verification" content="jM3z0TXp0biP1G_m188136seOk1Uqsq3RWPzgBy3aOw" />
+    <meta charset="UTF-8">
+    <title>CurvPy Manual</title>
+    <style>
+        /* CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
 
-  <title>CurvPy Documentation</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/agate.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      padding: 0;
-      background-color: #f7f7f7;
-      color: #333;
-    }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
 
-    h1, h2, h3 {
-      margin: 20px 0 10px;
-      font-weight: bold;
-    }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
 
-    p, pre, code {
-      margin: 10px 0;
-    }
+        .function {
+            background: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
 
-    pre {
-      padding: 10px;
-      background-color: #f4f4f4;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
+        .function h2 {
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
 
-    code {
-      padding: 2px 5px;
-      background-color: #f4f4f4;
-      border-radius: 3px;
-    }
+        .function p {
+            color: #555;
+        }
 
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
+        .function pre {
+            background-color: #282c34;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            color: #abb2bf;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-  </style>
+        .function code {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            color: #abb2bf;
+        }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>CurvPy</h1>
 
-    <p>Welcome to the CurvPy documentation! CurvPy is a powerful data analysis tool for performing regression analysis and optimization on datasets. This library is designed to simplify the process of analysing and optimizing data, making it accessible to beginners and experienced data scientists. CurvPy also has a UI-based <a href="https://github.com/sidhu2690/CurvPy">repository</a>, which has more utilities. (CurvPy is still under development)  </p>
+    <header>
+        <h1>CurvPy Manual</h1>
+    </header>
 
-    <h2>Installation</h2>
-    <pre><code>pip install curvpy</code></pre>
+    <div class="container">
 
-    <h2>Usage</h2>
+        <div class="function">
+            <h2>optimize</h2>
+            <p>Fits a model function to data using curve fitting. Allows specifying bounds and maximum evaluations.</p>
+            <h3>Usage:</h3>
+            <pre><code>fitted_params = optimize(func, x_data, y_data, guess_params)
+func - the model function to fit
+x_data - array of x data points
+y_data - array of y data points
+guess_params - initial guess for model parameters</code></pre>
+            <p>Returns: array of optimized parameter values</p>
+            <h3>Example:</h3>
+            <pre><code>def exponential(x, a, b):
+    return a * np.exp(b*x)
 
-    <h3>Regression Analysis</h3>
-    <p>CurvPy provides a simple interface for performing regression analysis on your data. Here's an example of how to use CurvPy for regression analysis:</p>
-    <pre><code>
-import numpy as np
-from curvpy import datasleuth
+x_data = [1, 2, 3, 4, 5] 
+y_data = [2, 4, 8, 16, 32]
 
-# Example usage
-x = np.array([1, 2, 3, 4, 5])
-y = np.array([2, 4, 6, 8, 10])
+params = optimize(exponential, x_data, y_data, guess_params=[1, 1]) 
+# Returns optimized params for the exponential model</code></pre>
+        </div>
 
-# Perform regression analysis
-results = datasleuth(x, y)
-print(results)
-    </code></pre>
-<h4>Result</h4>
-    <pre><code>Linear Regression
-Equation: y = 2.00x + 0.00
-R-squared value: 1.0
+        <!-- savitzky_golay -->
+        <div class="function">
+            <h2>savitzky_golay</h2>
+            <p>Applies Savitzky-Golay filter to smooth noisy data.</p>
+            <h3>Usage:</h3>
+            <pre><code>savitzky_golay(y, window_size, order, x)
+y - array of noisy y data
+window_size - size of filter window
+order - order of polynomial filter
+x - array of x data points</code></pre>
+            <p>Returns: smoothed data</p>
+            <h3>Example:</h3>
+            <pre><code># Your data and parameters
+x = np.linspace(0, 10, 100)
+y_noisy = np.sin(x) + np.random.normal(0, 0.2, 100)  # Noisy sine wave
+window_size = 15
+degree = 2
 
-Polynomial Regression (Degree 2 )
-Equation: y = 0.00x^0 + 2.00x^1 + 0.00x^2 + 0.00
-R-squared value: 1.0
+# Applying Savitzky-Golay filter and plotting
+savitzky_golay(y_noisy, window_size, degree, x)</code></pre>
+        </div>
 
-Logarithmic Regression
-Equation: y = 1.36 + 4.84 * log(x)
-R-squared value: 0.9473245635652926
-
-Exponential Regression
-Equation: y = 2.08 * exp(0.32 * x)
-R-squared value: 0.9644977818927202
-
-Power Law Regression
-Equation: y = 2.00 * x^1.00
-R-squared value: 1.0
-
-Sinusoidal Regression
-Equation: y = -733.82 * sin(3.14 * x + -3.14) + 6.00
-R-squared value: 0.35999948635426393
-</code></pre>
+        <!-- missing_data_imputation -->
+        <div class="function">
+            <h2>missing_data_imputation</h2>
+            <p>Handles missing values in data using various imputation methods.</p>
+            <h3>Usage:</h3>
+            <pre><code>missing_data_imputation(data)
+data - array with missing values to be handled</code></pre>
+            <p>Returns: imputed data</p>
+            <h3>Example:</h3>
+            <pre><code>data = np.array([1, 2, np.nan, 4, np.nan, 6, 7, np.nan, 9])
 
 
+missing_data_imputation(data)
+# Tries different imputation methods on data</code></pre>
+        </div>
 
-    <h3>Optimization</h3>
-    <p>In addition to regression analysis, CurvPy also offers an optimization module for fitting functions to your data. Here's an example of how to use CurvPy for optimization:</p>
-    <pre><code>
-import numpy as np
-from curvpy import optifit
+        <!-- summary_statistics -->
+        <div class="function">
+            <h2>summary_statistics</h2>
+            <p>Computes summary statistics on an array of data.</p>
+            <h3>Usage:</h3>
+            <pre><code>summary_statistics(data)
+data - array of data to summarize</code></pre>
+            <p>Returns: summary statistics</p>
+            <h3>Example:</h3>
+            <pre><code># Example dataset as a list
+my_data = [3, 6, 9, 12, 15, 18]
 
-# Define the function to fit
-def func(x, a, b, c):
-    return a * np.sin(b * x) + c
+# Call the function after converting the list to a NumPy array
+summary_statistics(my_data)</code></pre>
+        </div>
 
-# Generate some example data
-x_data = np.linspace(0, 10, 100)
-y_data = func(x_data, 2.5, 1.3, 0.5) + np.random.normal(scale=0.5, size=len(x_data))
+        <!-- plots -->
+        <div class="function">
+            <h2>plots</h2>
+            <p>Generates various types of plots from data.</p>
+            <h3>Usage:</h3>
+            <pre><code>plots(x, y, plot_types)
+x - x data
+y - y data
+plot_types - list of plot types</code></pre>
+            <p>Returns: plots as specified</p>
+            <h3>Example:</h3>
+            <pre><code># Example x and y data (replace with your datasets)
+x_data = [1, 2, 3, 4, 5]
+y_data = [2, 4, 5, 4, 5]
 
-# Initial guess for parameters
-guess_params = [1.0, 1.0, 1.0]
+# Generate the selected plots: scatter, histogram, bar, and line
+custom_plots(x_data, y_data, plot_types=['scatter', 'histogram', 'bar', 'line'])</code></pre>
+        </div>
 
-# Perform curve fitting and display results
-fit_results = optifit(func, x_data, y_data, guess_params)
-print(fit_results)
-    </code></pre>
-   <h4>Result</h4>
-    <pre><code>Fitting results:
-Parameters: [2.48839764 1.29229271 0.52824961]
-Number of data points: 100
-Number of parameters: 3
-SSE: 20.494621282703033
-RMSE: 0.4527098550142578
-R-squared: 0.9358824257496368
-Chi-square: 100.72107882471406
-KS Test - Statistic: 0.20081623125615902
-KS Test - p-value: 0.0005191873072093909
-AD Test - Statistic: 0.4611616085587116
-AD Test - Critical Values: [0.555 0.632 0.759 0.885 1.053]
-AD Test - Significance Levels: [15.  10.   5.   2.5  1. ]
-	</code></pre>
-<img src="https://i.ibb.co/BPvL14X/cur.png" alt="My Image">
+        <!-- regression -->
+        <div class="function">
+            <h2>regression</h2>
+            <p>Fits various regression models to data and evaluates them.</p>
+            <h3>Usage:</h3>
+            <pre><code>regression(x, y)
+x - independent variable data
+y - dependent variable data</code></pre>
+            <p>Returns: regression models and evaluation</p>
+            <h3>Example:</h3>
+            <pre><code># Example data (replace with your datasets)
+x_data = np.array([1, 2, 3, 4, 5])
+y_data = np.array([2, 4, 5, 4, 5])
 
-    <h3>OptiFit_v2</h3>
-    <p>In addition to OptiFit, we have another version of the same called OptiFit_v2, it also offers an optimization module for fitting functions to your data but it has some additional utilities. Here's an example of how to use CurvPy for optimization:</p>
-    <pre><code>
-from curvpy import optifit_v2
-import numpy as np
+# Perform the regression analysis and display statistics in order of R-squared scores
+regression(x_data, y_data)</code></pre>
+        </div>
 
-def func(x, a, b, c, d):
-    return a * np.power(x, b) * np.exp(c * x + d)
+        <!-- model_analysis -->
+        <div class="function">
+            <h2>model_analysis</h2>
+            <p>Computes regression model evaluation metrics.</p>
+            <h3>Usage:</h3>
+            <pre><code>model_analysis(y_true, y_pred, x)
+y_true - observed y data
+y_pred - predicted y data
+x - predictor variable data</code></pre>
+            <p>Returns: evaluation metrics</p>
+            <h3>Example:</h3>
+            <pre><code># Sample data
+np.random.seed(42)
+observed_values = np.random.rand(100) * 10  # Random observed values
+predicted_values = observed_values + np.random.randn(100)  # Adding random noise to create predicted values
+predictor_variable = np.random.rand(100) * 20  # Random predictor variable values
 
-x=np.array([10, 30, 50, 70, 90, 110, 130, 150, 170, 190, 210, 230, 250, 270])
-y=np.array([4823, 6402, 6186, 5551, 5073, 4773, 4353, 4017, 3779, 3480, 3132])
-initial_parameters = [0.0599344694,-0.0136083382,-0.0025016990,11.5658504714]
+# Assuming n = number of samples, k = number of parameters
+n_samples = len(observed_values)
+n_parameters = 2  # For demonstration, assuming a model with 2 parameters
 
-result = optifit_v2(func, initial_parameters, x, y)
-print("Optimal parameters:", result)
-    </code></pre>
-	     <h4>Result</h4>
-    <pre><code>
-Enter the lower bounds (optional): : 
-Enter the upper bounds (optional): : 
-Enter the number of function evaluations (optional): : 
-Optimal parameters: [ 5.99839516e-02 -1.36091352e-02 -2.50169054e-03  1.15650314e+01]
-    </code></pre>
-<h5>New update!</h5>
-<h6>Number of evaluations</h6>
-<p>
-The number of function evaluations determines the maximum number of times the model function is called during the optimization process.
-The optimization algorithm iteratively adjusts the parameters of the model function to minimize the difference between the predicted values and the actual data.
-The purpose of it is to set an upper limit on the computational time for the optimization process.
-If the algorithm reaches the maximum number of function evaluations specified by maxfev before converging to a solution, it will terminate and return the current best estimate of the parameters.
-</p>
-<h6>Bound parameters</h6>
-<p>
-The bounds parameter allows you to set lower and upper bounds for the parameters of the model function.
-It helps restrict the parameter search space during the optimization process.
-By setting bounds, you can constrain the parameters to specific ranges that make sense for your problem.
-The bounds parameter is a tuple of two arrays: the lower bounds and the upper bounds.
-For each parameter, specify the lower and upper bounds in the corresponding arrays.
-Setting a lower bound to -np.inf (negative infinity) means there is no lower constraint, while setting an upper bound to np.inf (positive infinity) means there is no upper constraint.
-Using bounds can help prevent unrealistic or invalid parameter values during optimization, improving the stability and reliability of the results.</p>
-	  
-	    
-    <h2>Contributing</h2>
-    <p>If you would like to contribute to the development of CurvPy, please contact <a href="sidhuser2690@gmail.com">curvpy@gmail.com</a></p>
+# Using the model_analysis() function
+evaluation_results = model_analysis(observed_values, predicted_values, predictor_variable, n=n_samples, k=n_parameters)
+print("Evaluation Metrics:")
+for metric, value in evaluation_results.items():
+    print(f"{metric}: {value}")</code></pre>
+        </div>
 
-    <h2>Contact</h2>
-    <p>For any inquiries or support, please contact the CurvPy team at <a href="sidhuser2690@gmail.com">curvpy@gmail.com</a>.</p>
-  </div>
+    </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
